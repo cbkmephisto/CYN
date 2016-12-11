@@ -48,12 +48,12 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 	while (GetMessage(&msg, NULL, 0, 0))
 	{
 		if(msg.message == WM_KEYDOWN &&	msg.wParam == 13)	// 回车
-			SendMessage(hWnd, WM_COMMAND, FUCKING_CN, 0);
+			SendMessage(hWnd, WM_COMMAND, SORRY_CN, 0);
 		else if(msg.message == WM_KEYDOWN &&	msg.wParam == 27)	// Esc
-			SendMessage(hWnd, WM_COMMAND, FUCKING_EX, 0);
+			SendMessage(hWnd, WM_COMMAND, SORRY_EX, 0);
 		else if(msg.message == WM_SYSKEYDOWN &&	(msg.wParam == 'a' || msg.wParam== 'A' ) && GetKeyState(VK_MENU)<0 && GetKeyState(VK_CONTROL)>=0
 			&& GetKeyState(VK_SHIFT)>=0)	// Alt+A
-			SendMessage(hWnd, WM_COMMAND, FUCKING_AB, 0);
+			SendMessage(hWnd, WM_COMMAND, SORRY_AB, 0);
 		else// if (!IsDialogMessage(hWnd, &msg))
 		{
 			TranslateMessage(&msg);
@@ -168,13 +168,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				WS_VISIBLE|WS_VSCROLL|WS_CHILD | LVS_SHOWSELALWAYS|LVS_SINGLESEL |LVS_REPORT,
 				//			margin/2, margin*3+100, 150, 320,
 				margin/2, margin*3+100, 260, 315,
-				hWnd, (HMENU)FUCKING_LL, NULL, NULL);
+				hWnd, (HMENU)SORRY_LL, NULL, NULL);
 
-		lStyle = ListView_GetExtendedListViewStyle(THE_LIST);  
+		lStyle = ListView_GetExtendedListViewStyle(THE_LIST);
 		lStyle |=  LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES;
 		ListView_SetExtendedListViewStyle(THE_LIST, lStyle);
 		LV_COLUMN column;
-//		LV_ITEM lvItem; 
+//		LV_ITEM lvItem;
 //		ZeroMemory(&lvItem, sizeof(LV_ITEM));
 		ZeroMemory(&column, sizeof(LV_COLUMN));
 		column.mask = LVCF_TEXT | LVCF_WIDTH | LVCF_FMT|LVCF_SUBITEM;
@@ -190,20 +190,20 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		ListView_InsertColumn(THE_LIST, 1, &column);
 
 
-/*		LVCOLUMN column[2]; 
-		column[0].mask = LVCF_TEXT|LVCF_FMT|LVCF_WIDTH; 
-		column[0].pszText = L"A"; 
-		column[0].fmt = LVCFMT_CENTER; 
-		column[0].cx = 80; 
+/*		LVCOLUMN column[2];
+		column[0].mask = LVCF_TEXT|LVCF_FMT|LVCF_WIDTH;
+		column[0].pszText = L"A";
+		column[0].fmt = LVCFMT_CENTER;
+		column[0].cx = 80;
 
-		column[1].mask = LVCF_TEXT|LVCF_FMT|LVCF_WIDTH; 
-		column[1].pszText = L"B"; 
-		column[1].fmt = LVCFMT_CENTER; 
-		column[1].cx = 80; 
+		column[1].mask = LVCF_TEXT|LVCF_FMT|LVCF_WIDTH;
+		column[1].pszText = L"B";
+		column[1].fmt = LVCFMT_CENTER;
+		column[1].cx = 80;
 
 		SendMessage(THE_LIST, LVM_INSERTCOLUMN, (WPARAM)0, (LPARAM)&column[0]);
 		SendMessage(THE_LIST, LVM_INSERTCOLUMN, (WPARAM)1, (LPARAM)&column[1]);
-///		
+///
 		wchar_t buff[16];
 		int i;
 		lvItem.mask = LVIF_TEXT;
@@ -215,10 +215,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			lvItem.pszText = (LPTSTR)buff;
 			if(i % 2 ==0)
 			{
-				lvItem.iSubItem = 0; 
+				lvItem.iSubItem = 0;
 				ListView_InsertItem(THE_LIST, &lvItem);
 			} else {
-				lvItem.iSubItem = 1; 
+				lvItem.iSubItem = 1;
 				ListView_SetItem(THE_LIST, &lvItem);
 			}
 		}
@@ -226,23 +226,23 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		/*		THE_LIST_R
 		=CreateWindowEx(WS_EX_STATICEDGE, L"LISTBOX", L"未检测", WS_CHILD|WS_VISIBLE|WS_VSCROLL|LBS_DISABLENOSCROLL|LBS_NOTIFY,
 		margin/2+155, margin*3+100, 105, 320,
-		hWnd, (HMENU)FUCKING_LR, NULL, NULL);
+		hWnd, (HMENU)SORRY_LR, NULL, NULL);
 		*/
 		hFont=(HFONT)SendMessage(THE_LIST, WM_GETFONT, 0, 0);
 
 		EDITCN=CreateWindow(L"button", L"ESC=退出", WS_CHILD|WS_VISIBLE,
 			mWidth-margin-75, mHeight-int(margin*1.5)-40, 80, 30,
-			hWnd,(HMENU)FUCKING_EX, NULL, NULL);
+			hWnd,(HMENU)SORRY_EX, NULL, NULL);
 		SendMessage(EDITCN,WM_SETFONT,(WPARAM)hFont,MAKELONG(0,0));
 
 		EDITCN=CreateWindow(L"button", L"Alt+A=关于", WS_CHILD|WS_VISIBLE,
 			mWidth-margin*2-235,mHeight-int(margin*1.5)-40, 80, 30,
-			hWnd,(HMENU)FUCKING_AB, NULL, NULL);
+			hWnd,(HMENU)SORRY_AB, NULL, NULL);
 		SendMessage(EDITCN,WM_SETFONT,(WPARAM)hFont,MAKELONG(0,0));
 
 		EDITCN=CreateWindow(L"button", L"回车=改名", WS_CHILD|WS_VISIBLE,
 			mWidth-int(margin*1.5)-155, mHeight-int(margin*1.5)-40, 80, 30,
-			hWnd,(HMENU)FUCKING_CN, NULL, NULL);
+			hWnd,(HMENU)SORRY_CN, NULL, NULL);
 		SendMessage(EDITCN,WM_SETFONT,(WPARAM)hFont,MAKELONG(0,0));
 
 		EDITCN=CreateWindowEx(WS_EX_STATICEDGE, L"static", L"魔兽进程", LABSTYLE,
@@ -269,7 +269,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			margin/2, margin*3/2+40, 125, LABHEIGHT,
 			hWnd,NULL, NULL, NULL);
 		SendMessage(EDITCN,WM_SETFONT,(WPARAM)hFont,MAKELONG(0,0));
-				
+
 		EDIT3=CreateWindowEx(WS_EX_STATICEDGE, L"static", L"未检测", LEDSTYLE,
 			margin+125, margin*3/2+40, 125, LABHEIGHT,
 			hWnd,NULL, NULL, NULL);
@@ -326,7 +326,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	case WM_NOTIFY:
 		wmId    = LOWORD(wParam);
 		wmEvent = HIWORD(wParam);
-		if(wmId==FUCKING_LL && ListView_GetItemCount(THE_LIST)>0 )
+		if(wmId==SORRY_LL && ListView_GetItemCount(THE_LIST)>0 )
 			switch( ((LPNMHDR) lParam)->code )
 			{
 			case NM_CLICK:
@@ -340,8 +340,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				nInfo = (LPNMITEMACTIVATE)lParam;
 				ListView_GetItemText(THE_LIST, nInfo->iItem, 0, lpBuff, BFSZ);
 				SetWindowText(EDITCN, lpBuff);
-				SendMessage(hWnd, WM_COMMAND, FUCKING_CN, 0);
-				SendMessage(hWnd, WM_COMMAND, FUCKING_EX, 0);
+				SendMessage(hWnd, WM_COMMAND, SORRY_CN, 0);
+				SendMessage(hWnd, WM_COMMAND, SORRY_EX, 0);
 				break;
 			case LVN_COLUMNCLICK:
 				nLv=(NMLISTVIEW*)lParam;
@@ -358,16 +358,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		// 分析菜单选择:
 		switch (wmId)
 		{
-		case FUCKING_CN:
+		case SORRY_CN:
 			checkWindows(EDIT1, EDIT2, EDIT3, EDIT4, EDITCN, THE_LIST, true);//_L, THE_LIST_R, true);
 			break;
-		case FUCKING_AB:
+		case SORRY_AB:
 			DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
 			break;
-		case FUCKING_EX:
+		case SORRY_EX:
 			DestroyWindow(hWnd);
 			break;
-/*		case FUCKING_LL:
+/*		case SORRY_LL:
 			/*			if(wmEvent==LBN_SELCHANGE)
 			{
 			int index = SendMessage(THE_LIST_L, LB_GETCURSEL, 0, 0);
@@ -383,7 +383,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				SetWindowText(EDITCN, bf);
 			}
 			break;
-			/*		case FUCKING_LR:
+			/*		case SORRY_LR:
 			if(wmEvent==LBN_SELCHANGE)
 			{
 			int index = SendMessage(THE_LIST_R, LB_GETCURSEL, 0, 0);

@@ -5,11 +5,11 @@
 //#include "stdlib.h"
 #include <stdio.h>
 
-#define FUCKING_CN	199
-#define FUCKING_AB	198
-#define FUCKING_EX	197
-#define FUCKING_LL	196
-#define FUCKING_LR	195
+#define SORRY_CN	199
+#define SORRY_AB	198
+#define SORRY_EX	197
+#define SORRY_LL	196
+#define SORRY_LR	195
 
 #define BFSZ	128
 
@@ -73,8 +73,8 @@ void promoteP()
 
 void MessageInteger(DWORD ix)
 {
-	char s[10]; 
-	_itoa_s(ix,s,10); 
+	char s[10];
+	_itoa_s(ix,s,10);
 	MessageBoxA(NULL,s, " ",MB_OK);
 }
 
@@ -377,7 +377,7 @@ void InsertTheList(HANDLE pHandle, HWND LL)//, HWND LR)
 			TrimItem2Name(item, item, BFSZ);
 			// 他的名字
 			lvItem.pszText = item;
-			lvItem.iSubItem = 0; 
+			lvItem.iSubItem = 0;
 			ListView_InsertItem(LL, &lvItem);
 			// 他的积分
 			lvItem.pszText = grade;
@@ -484,9 +484,9 @@ bool checkWindows(HWND WAR3P, HWND HFP, HWND INROOM, HWND CURNAME, HWND EDITCN, 
 			)
 			//*/
 		{
-			//			char s[10]; 
-			//			_itoa(pe.th32ProcessID,s,10); 
-			//			MessageBoxA(NULL,s, " ",MB_OK); 
+			//			char s[10];
+			//			_itoa(pe.th32ProcessID,s,10);
+			//			MessageBoxA(NULL,s, " ",MB_OK);
 			pID=pe.th32ProcessID;
 			pHandle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pID);// 获取到浩方进程的handle
 		}
