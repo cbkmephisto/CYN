@@ -1,3 +1,8 @@
+/*
+Copyright (c) 2016 Hailin Su
+MIT LISENCE, see the file named 'LISENCE'
+*/
+
 #pragma once
 
 #include "resource.h"

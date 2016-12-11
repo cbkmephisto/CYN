@@ -1,3 +1,8 @@
+/*
+Copyright (c) 2016 Hailin Su
+MIT LISENCE, see the file named 'LISENCE'
+*/
+
 #define I(m) InsertLog(txtEdit, m)
 void InsertLog(HWND txtEdit, LPTSTR log)
 {

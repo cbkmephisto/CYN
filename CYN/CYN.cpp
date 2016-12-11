@@ -1,3 +1,7 @@
+/*
+Copyright (c) 2016 Hailin Su
+MIT LISENCE, see the file named 'LISENCE'
+*/
 // CYN.cpp : 定义应用程序的入口点。
 //
 
